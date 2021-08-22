@@ -12,3 +12,7 @@ func main() {
 	flag.Parse()
 
 	network := "tcp"
+
+	port := [33]string{"
+		
+		"}
