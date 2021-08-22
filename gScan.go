@@ -30,7 +30,10 @@ func main() {
 		address := *ip + ":" + p
 		connection, err := net.Dial(network, address)
 
-		
+		if err == nil {
+			fmt.Println("[+] Connection established.. ", 
+			connection.RemoteAddr().String())
+		}
 
 	}
 
