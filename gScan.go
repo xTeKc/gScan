@@ -27,6 +27,10 @@ func main() {
 		"6379", "8080", "11211"}
 
 	for _, p := range port {
+		address := *ip + ":" + p
+		connection, err := net.Dial(network, address)
+
 		
+
 	}
 
