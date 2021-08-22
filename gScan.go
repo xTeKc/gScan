@@ -33,6 +33,8 @@ func main() {
 		if err == nil {
 			fmt.Println("[+] Connection established.. ", 
 			connection.RemoteAddr().String())
+		} else {
+			fmt.Println("[-] Port " + p + " closed.")
 		}
 
 	}
