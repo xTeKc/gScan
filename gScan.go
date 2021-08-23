@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
+	// "log"
 	"net"
 )
 
@@ -30,10 +30,11 @@ func main() {
 		address := *ip + ":" + p
 		connection, err := net.Dial(network, address)
 
-		if err != nil {
+		if err == nil {
 			fmt.Println("[+] Connection established.. ", 
 			connection.RemoteAddr().String())
 		} else {
 			fmt.Println("[-] Port " + p + " closed.")
 		}
 	}
+}
