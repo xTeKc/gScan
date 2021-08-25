@@ -5,3 +5,6 @@ import (
 	"net"
 )
 
+func main() {
+	_, err := net.Dial("tcp", "scanme.nmap.org:80")
+}
