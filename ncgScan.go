@@ -6,7 +6,7 @@ import (
 	"sort"
 )
 
-func worker(ports results chan int) {
+func worker(ports, results chan int) {
 	for p := range ports {
 		address := fmt.Sprintf("scanme.nmap.org:%d", p)
 		conn, err := net.Dial("tcp", address)
