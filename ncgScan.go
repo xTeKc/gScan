@@ -21,14 +21,30 @@ func worker(ports results chan int) {
 
 func main() {
 	ports := make(chan int, 100)
-	var wg sync.WaitGroup
+	results := make(chan int)
+	var openports []int
+
 	for i := 0; i < cap(ports); i++ {
-		go worker(ports, &wg)
+		go worker(ports, results)
 	}
-	for i := 1; i <= 1024; i++ {
-		wg.Add(1)
-		ports <- i
+
+	go func() {
+		for i := 1; i <= 1024; i++ {
+			ports <- i
+		}
+	}()
+
+	for i := 0; i < 1024; i++ {
+		port := <- results
+		if port != 0 {
+			openports = append(openports, port)
+		}
 	}
-	wg.Wait()
+
 	close(ports)
+	close(results)
+	sort.Ints(openports)
+	for _, port := range openports {
+		fmt .Printf("%d open\n", port)
+	}
 }
