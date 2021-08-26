@@ -15,7 +15,7 @@ func worker(ports chan int, wg *sync.WaitGroup) {
 func main() {
 	ports := make(chan int, 100)
 	var wg sync.WaitGroup
-	for i := 1; i < cap(ports); i++ {
+	for i := 0; i < cap(ports); i++ {
 		go worker(ports, &wg)
 	}
 	for i := 1; i <= 1024; i++ {
