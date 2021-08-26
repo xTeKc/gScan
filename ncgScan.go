@@ -6,6 +6,10 @@ import (
 	"sync"
 )
 
+func worker() {
+	
+}
+
 func main() {
 	var wg sync.WaitGroup
 	for i := 1; i <= 65535; i++ {
